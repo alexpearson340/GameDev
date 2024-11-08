@@ -1,11 +1,7 @@
 x64/
 .vs/
-LearnCpp.sln
 **.dSYM
 **.DS_Store
 
 # output files from compilation
-main
-tetris
-texture
-helloworld
+build/

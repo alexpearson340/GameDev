@@ -29,7 +29,7 @@
           "-I",          
           "/opt/homebrew/opt/sdl2_ttf/include/SDL2/",            
           "-o",
-          "${fileDirname}/${fileBasenameNoExtension}"
+          "${workspaceFolder}/build/${fileDirname}"
         ],
         "options": {
           "cwd": "${fileDirname}"
