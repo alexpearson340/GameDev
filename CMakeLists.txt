@@ -19,24 +19,26 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include
 )
 
-# add_library(level_editor_lib STATIC 
-# )
+add_library(engine_lib STATIC 
+    src/engine/GameEngine.cpp
+    src/engine/Texture.cpp
+)
 
 add_executable(level_editor 
     src/main.cpp
 )
 
 target_link_libraries(level_editor
-    # level_editor_lib
+    engine_lib
     ${SDL2_LIBRARY}
     ${SDL2_IMAGE_LIBRARY}
     ${SDL2_TTF_LIBRARY}
 )
 
 # Set assets directory relative to the source
-# target_compile_definitions(level_editor_lib PRIVATE 
-#     ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
-# )
+target_compile_definitions(engine_lib PRIVATE 
+    ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
+)
 
 # Google Test setup
 include(FetchContent)
