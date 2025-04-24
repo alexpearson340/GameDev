@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "engine/GameEngine.h"
+#include "engine/BaseEngine.h"
 #include <cassert>
 
-GameEngine::GameEngine(const int screenHeight, const int screenWidth)
+BaseEngine::BaseEngine(const int screenHeight, const int screenWidth)
     : mScreenHeight { screenHeight }
     , mScreenWidth { screenWidth }
     , mWindow { nullptr }
@@ -20,11 +20,11 @@ GameEngine::GameEngine(const int screenHeight, const int screenWidth)
 {
 }
 
-GameEngine::~GameEngine()
+BaseEngine::~BaseEngine()
 {
 }
 
-bool GameEngine::init()
+bool BaseEngine::init()
 {
     // Initialization flag
     bool success = true;
@@ -94,7 +94,7 @@ bool GameEngine::init()
     return success;
 }
 
-bool GameEngine::loadTexture(const int textureIndex, const std::string& fileName)
+bool BaseEngine::loadTexture(const int textureIndex, const std::string& fileName)
 {
     bool success = true;
     std::string filePath { std::string(ASSETS_DIR) + "/" + fileName };
@@ -109,7 +109,7 @@ bool GameEngine::loadTexture(const int textureIndex, const std::string& fileName
     return success;
 }
 
-bool GameEngine::loadFont(const std::string& fileName)
+bool BaseEngine::loadFont(const std::string& fileName)
 {
     bool success { true };
     std::string fontPath { std::string(ASSETS_DIR) + "/" + fileName };
@@ -122,7 +122,7 @@ bool GameEngine::loadFont(const std::string& fileName)
     return success;
 }
 
-void GameEngine::updateInformationBar()
+void BaseEngine::updateInformationBar()
 {
     mInfoText.str("");
     mInfoText << "  fps  " << mFps << "  |  score  " << mScore;
@@ -133,7 +133,7 @@ void GameEngine::updateInformationBar()
     }
 }
 
-void GameEngine::close()
+void BaseEngine::close()
 {
     // Free loaded images
     for (int i = 0; i < mTextures.size(); ++i)
@@ -157,7 +157,7 @@ void GameEngine::close()
     SDL_Quit();
 }
 
-int GameEngine::run(int argc, char* args[])
+int BaseEngine::run(int argc, char* args[])
 {
     // Start up SDL and create window
     if (!init())

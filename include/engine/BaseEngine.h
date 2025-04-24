@@ -1,5 +1,5 @@
-#ifndef GAMEENGINE_H
-#define GAMEENGINE_H
+#ifndef BASEENGINE_H
+#define BASEENGINE_H
 
 #include "engine/Texture.h"
 #include <sstream>
@@ -10,17 +10,17 @@ inline constexpr int BOTTOM_BAR_HEIGHT { 24 };
 inline constexpr int FONT_SIZE = 18;
 
 // The game engine class
-class GameEngine
+class BaseEngine
 {
 public:
-    GameEngine(int, int);
-    virtual ~GameEngine();
+    BaseEngine(int, int);
+    virtual ~BaseEngine();
 
     // We dont support copy constructor, copy assignment, move constructor, move assignment
-    GameEngine(const GameEngine&) = delete;
-    GameEngine& operator=(const GameEngine&) = delete;
-    GameEngine(GameEngine&&) = delete;
-    GameEngine& operator=(GameEngine&&) = delete;
+    BaseEngine(const BaseEngine&) = delete;
+    BaseEngine& operator=(const BaseEngine&) = delete;
+    BaseEngine(BaseEngine&&) = delete;
+    BaseEngine& operator=(BaseEngine&&) = delete;
 
     // Entry point. Run the game
     int run(int argc, char* args[]);
