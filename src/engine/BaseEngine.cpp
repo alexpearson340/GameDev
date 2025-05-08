@@ -182,7 +182,7 @@ int BaseEngine::run(int argc, char* args[])
     {
         // Load media
         printf("Loading media\n");
-        if (!loadMedia())
+        if (!loadMedia() || !loadFont(FONT_ARIAL))
         {
             printf("Failed to load media!\n");
         }
