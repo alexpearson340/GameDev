@@ -19,23 +19,33 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include
 )
 
+# the intention is that the engine lib encapsulates the rendering functionality (SDL2)
 add_library(engine_lib STATIC 
     src/engine/BaseEngine.cpp
     src/engine/Texture.cpp
 )
+target_link_libraries(engine_lib
+    PRIVATE
+        ${SDL2_LIBRARY}
+        ${SDL2_IMAGE_LIBRARY}
+        ${SDL2_TTF_LIBRARY}
+)
 
+# level editor
+add_library(level_editor_lib STATIC 
+    src/level_editor/LevelEditorEngine.cpp
+)
+target_link_libraries(level_editor_lib
+    PUBLIC engine_lib
+)
 add_executable(level_editor 
     apps/level_editor_main.cpp
 )
-
 target_link_libraries(level_editor
-    engine_lib
-    ${SDL2_LIBRARY}
-    ${SDL2_IMAGE_LIBRARY}
-    ${SDL2_TTF_LIBRARY}
+    PRIVATE level_editor_lib
 )
 
-# Set assets directory relative to the source
+# set assets directory relative to the source
 target_compile_definitions(engine_lib PRIVATE 
     ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
 )
