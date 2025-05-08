@@ -25,7 +25,7 @@ add_library(engine_lib STATIC
 )
 
 add_executable(level_editor 
-    src/main.cpp
+    apps/level_editor_main.cpp
 )
 
 target_link_libraries(level_editor

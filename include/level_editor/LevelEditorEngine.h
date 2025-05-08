@@ -2,11 +2,12 @@
 #define LEVELEDITORENGINE_H
 
 #include "engine/BaseEngine.h"
+#include "level_editor/Constants.h"
 
 class LevelEditorEngine : public BaseEngine
 {
 public:
-    LevelEditorEngine(int, int);
+    LevelEditorEngine();
 
 private:
     bool loadMedia() override;
@@ -15,4 +16,4 @@ private:
     bool render() override;
 };
 
-#endif
+#endif // LEVELEDITORENGINE_H

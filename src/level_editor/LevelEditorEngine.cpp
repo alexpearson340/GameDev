@@ -1,9 +1,11 @@
+#include <iostream>
+
 #include "level_editor/LevelEditorEngine.h"
 
-LevelEditorEngine::LevelEditorEngine(const int screenHeight, const int screenWidth)
-    : BaseEngine(screenHeight, screenWidth)
+LevelEditorEngine::LevelEditorEngine()
+    : BaseEngine(720, 1080)
 {
-}
+};
 
 bool LevelEditorEngine::loadMedia()
 {
